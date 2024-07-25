@@ -73,10 +73,12 @@ class coachReg(models.Model):
     address=models.CharField(max_length=100)
     document=models.CharField(max_length=100)
 
-class CoachAttendance(models.Model):
-    coach_name = models.CharField(max_length=255)
-    date = models.DateField()
-    attendance_status = models.CharField(max_length=10)  # 'Present' or 'Absent'
 
-    def __str__(self):
-        return f"{self.coach_name} - {self.date} - {self.attendance_status}"
+
+class Coach_allocation(models.Model):
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=10)
+    session = models.CharField(max_length=10)
+    batchtime = models.CharField(max_length=10)
+    coachname = models.CharField(max_length=10)
+    coachType= models.CharField(max_length=10)

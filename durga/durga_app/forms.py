@@ -1,12 +1,17 @@
 # In forms.py
 
 from django import forms
-from .models import Enquiry, Register  # Import your Enquiry model
+from .models import Enquiry, Register
 
 class EnquiryForm(forms.ModelForm):
     class Meta:
         model = Enquiry
         fields = ['first_name', 'contact_no',]
+
+
+class CoachAllocation:
+    pass
+
 
 class RegisterForm(forms.ModelForm):
     class Meta:
@@ -27,3 +32,5 @@ class RegisterForm(forms.ModelForm):
 
 
         }
+
+

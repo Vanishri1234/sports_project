@@ -9,7 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_GET
 
 from .forms import EnquiryForm, RegisterForm
-from .models import Enquiry, Register, Duration, coachReg, CoachAttendance
+from .models import Enquiry, Register, Duration, coachReg, Coach_allocation
 
 
 # Create your views here.
@@ -301,8 +301,28 @@ def player_name(request):
 
 
 def coach_allocation(request):
-    return render(request,"coaches/coach_allocation.html")
+    if request.method == 'POST':
+        # Extract data from the form
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        session = request.POST.get('session')
+        batchtime = request.POST.get('batchtime')
+        coachname = request.POST.get('coachname')
+        coachType = request.POST.get('coachType')
 
+
+        Coach_allocation.objects.create(
+            first_name=first_name,
+            last_name=last_name,
+            session=session,
+            batchtime=batchtime,
+            coachname=coachname,
+            coachType=coachType
+
+        )
+
+        return redirect('coach_allocation')
+    return render(request, 'coaches/coach_allocation.html')
 
 
 def fetch_name_data(request):
